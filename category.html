@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore women-owned businesses in Bundi.">
+  <title>Business Category | CAIT Women Wing Bundi</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .category-page {
+      width: min(100% - 32px, 1100px);
+      margin: 42px auto 70px;
+    }
+
+    .category-heading {
+      margin-bottom: 28px;
+    }
+
+    .category-heading h1 {
+      color: #17345c;
+      font-size: clamp(30px, 5vw, 44px);
+      margin: 12px 0;
+    }
+
+    .category-heading p {
+      color: #64748b;
+    }
+
+    .category-business-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .category-business-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #17345c;
+      background: white;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .category-business-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(15,23,42,.08);
+    }
+
+    .category-business-media {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: 11px;
+      overflow: hidden;
+      background: #f7eedc;
+    }
+
+    .category-business-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .category-business-placeholder {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      font-size: 54px;
+    }
+
+    .category-business-card h3 {
+      margin: 4px 2px 0;
+      font-size: 19px;
+    }
+
+    .category-business-card p {
+      margin: 0 2px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .category-empty {
+      padding: 28px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      color: #64748b;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      .category-business-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .category-business-card {
+        padding: 9px;
+      }
+
+      .category-business-card h3 {
+        font-size: 16px;
+      }
+
+      .category-business-card p {
+        font-size: 13px;
+      }
+    }
+    /* Compact business cards - Desktop & Mobile */
+
+.category-business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.category-business-card {
+  padding: 10px;
+  gap: 7px;
+  border-radius: 12px;
+}
+
+.category-business-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.category-business-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-business-card h3 {
+  font-size: 15px;
+  line-height: 1.3;
+  margin: 3px 0;
+}
+
+.category-business-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .category-business-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .category-business-card {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .category-business-card h3 {
+    font-size: 13px;
+  }
+
+  .category-business-card p {
+    font-size: 11px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/cait-logo-transparent.png" alt="CAIT Logo" class="brand-logo">
+      <span>CAIT<small>WOMEN WING BUNDI</small></span>
+    </a>
+
+    <nav>
+      <a href="index.html#directory">Directory</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </header>
+
+  <main class="category-page">
+    <a href="index.html#directory" class="text-link">← Back to Categories</a>
+
+    <div class="category-heading">
+      <span class="eyebrow">DISCOVER LOCAL BUSINESSES</span>
+      <h1 id="categoryTitle">Loading category...</h1>
+      <p id="categoryDescription">Approved businesses in this category.</p>
+      <p id="categoryCount"></p>
+    </div>
+
+    <div class="category-business-grid" id="categoryBusinessGrid">
+      <p>Loading businesses...</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>CAIT Women Wing Bundi · Supporting women-owned businesses.</p>
+  </footer>
+
+  <script type="module" src="category.js"></script>
+</body>
+</html>

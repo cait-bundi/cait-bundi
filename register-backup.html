@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#651d32">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Business Registration | CAIT Women Wing Bundi</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body { background:#f8fafc; }
+    .registration-wrap {
+      width:min(100% - 28px, 820px);
+      margin:35px auto 60px;
+    }
+    .registration-card {
+      padding:clamp(20px,4vw,32px);
+      border:1px solid #e2e8f0;
+      border-radius:18px;
+      background:#fff;
+      box-shadow:0 8px 28px rgba(0,0,0,.05);
+    }
+    .registration-card h1 { margin-top:0; color:#651d32; }
+    .registration-intro,.form-note {
+      color:#64748b;
+      line-height:1.7;
+    }
+    .registration-form {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+    .registration-form label {
+      display:block;
+      font-weight:650;
+      font-size:.92rem;
+    }
+    .registration-form input:not([type="checkbox"]),
+    .registration-form select,
+    .registration-form textarea {
+      display:block;
+      width:100%;
+      box-sizing:border-box;
+      margin-top:7px;
+      padding:12px;
+      border:1px solid #cbd5e1;
+      border-radius:9px;
+      background:#fff;
+      font:inherit;
+    }
+    .registration-form input:focus,
+    .registration-form select:focus,
+    .registration-form textarea:focus {
+      outline:3px solid rgba(101,29,50,.1);
+      border-color:#651d32;
+    }
+    .registration-form textarea {
+      min-height:100px;
+      resize:vertical;
+    }
+    .full-width { grid-column:1 / -1; }
+    .registration-form button {
+      padding:13px 18px;
+      border:0;
+      border-radius:9px;
+      background:#651d32;
+      color:#fff;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .registration-form button:disabled {
+      opacity:.6;
+      cursor:wait;
+    }
+    .form-note { font-size:.88rem; }
+    .checkbox-label {
+      display:flex !important;
+      align-items:flex-start;
+      gap:10px;
+      line-height:1.6;
+    }
+    .checkbox-label input {
+      margin-top:4px;
+      flex:0 0 auto;
+    }
+    #formMessage {
+      margin-top:16px;
+      line-height:1.6;
+      overflow-wrap:anywhere;
+    }
+    #formMessage:not(:empty) {
+      padding:12px;
+      border-radius:9px;
+      background:#f1f5f9;
+    }
+    .registration-links { margin-top:20px; line-height:1.8; }
+    @media(max-width:600px) {
+      .registration-form { grid-template-columns:1fr; }
+      .full-width { grid-column:auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/cait-logo-transparent.png"
+           alt="CAIT Women Wing Logo" class="brand-logo">
+      <span>CAIT <small>WOMEN WING BUNDI</small></span>
+    </a>
+    <a class="nav-button" href="index.html">Back to Home</a>
+  </header>
+
+  <main class="registration-wrap">
+    <section class="registration-card">
+      <h1>Register Your Business</h1>
+
+      <p class="registration-intro">
+        CAIT Women Wing Bundi business directory ke liye account banayein
+        aur apni business details submit karein.
+      </p>
+
+      <p class="form-note">
+        Application pehle pending rahegi. Admin approval ke baad
+        listing public directory mein dikhayi ja sakti hai.
+      </p>
+
+      <form id="registrationForm" class="registration-form">
+
+        <div>
+          <label for="ownerName">Owner / Member Name *</label>
+          <input id="ownerName" name="ownerName"
+                 autocomplete="name" required maxlength="100">
+        </div>
+
+        <div>
+          <label for="email">Email address *</label>
+          <input id="email" name="email" type="email"
+                 autocomplete="email" required maxlength="254"
+                 placeholder="you@example.com">
+        </div>
+
+        <div>
+          <label for="password">Create password *</label>
+          <input id="password" name="password" type="password"
+                 autocomplete="new-password" minlength="6" required>
+          <small class="form-note">Kam se kam 6 characters.</small>
+        </div>
+
+        <div>
+          <label for="confirmPassword">Confirm password *</label>
+          <input id="confirmPassword" name="confirmPassword"
+                 type="password" autocomplete="new-password"
+                 minlength="6" required>
+        </div>
+
+        <div>
+          <label for="businessName">Business Name *</label>
+          <input id="businessName" name="businessName"
+                 required maxlength="120">
+        </div>
+
+        <div>
+          <label for="category">Business Category *</label>
+          <select id="category" name="category" required>
+            <option value="">Select category</option>
+            <option value="Fashion">Fashion &amp; Boutique</option>
+            <option value="Food">Food &amp; Bakery</option>
+            <option value="Beauty">Beauty &amp; Wellness</option>
+            <option value="Education">Education</option>
+            <option value="Services">Professional Services</option>
+            <option value="Handicrafts">Handicrafts</option>
+            <option value="Retail & Shopping">Retail &amp; Shopping</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="businessPhone">Business contact number (optional)</label>
+          <input id="businessPhone" name="businessPhone"
+                 type="tel" inputmode="tel" maxlength="20"
+                 placeholder="Business contact number">
+        </div>
+
+        <div>
+          <label for="city">City / Area *</label>
+          <input id="city" name="city" value="Bundi"
+                 required maxlength="100">
+        </div>
+
+        <div class="full-width">
+          <label for="address">Business Address *</label>
+          <textarea id="address" name="address"
+                    required maxlength="300"></textarea>
+        </div>
+
+        <div class="full-width">
+          <label for="description">Business Description (optional)</label>
+          <textarea id="description" name="description"
+                    maxlength="1000"
+                    placeholder="Aapka business kya products ya services provide karta hai?"></textarea>
+        </div>
+
+        <div class="full-width">
+          <label class="checkbox-label">
+            <input type="checkbox" id="showContact" name="showContact">
+            <span>Business contact number public listing mein dikhane ki permission deta/deti hoon (agar number diya hai).</span>
+          </label>
+        </div>
+
+        <div class="full-width">
+          <label class="checkbox-label">
+            <input type="checkbox" id="confirmWomenOwned" required>
+            <span>Main confirm karta/karti hoon ki ye listing women-owned business ke liye submit ki ja rahi hai.</span>
+          </label>
+        </div>
+
+        <div class="full-width">
+          <button id="submitBtn" type="submit">
+            Create Account &amp; Submit
+          </button>
+
+          <p id="formMessage" role="status" aria-live="polite"></p>
+
+          <p class="registration-links">
+            Already registered? <a href="login.html">Login here</a>.
+          </p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script type="module">
+    import {
+      auth,
+      db,
+      createUserWithEmailAndPassword,
+      collection,
+      addDoc,
+      getDocs,
+      doc,
+      getDoc,
+      setDoc,
+      query,
+      where,
+      serverTimestamp
+    } from "./firebase.js";
+
+    const form = document.getElementById("registrationForm");
+    const message = document.getElementById("formMessage");
+    const submitBtn = document.getElementById("submitBtn");
+
+    let submitting = false;
+
+    function showMessage(text) {
+      message.textContent = text;
+    }
+
+    function friendlyError(error) {
+      const code = error?.code || "";
+
+      if (code.includes("email-already-in-use")) {
+        return "Is email ka account pehle se bana hua hai. Login karein.";
+      }
+
+      if (code.includes("invalid-email")) {
+        return "Valid email address enter karein.";
+      }
+
+      if (code.includes("weak-password")) {
+        return "Password kam se kam 6 characters ka hona chahiye.";
+      }
+
+      if (code.includes("operation-not-allowed")) {
+        return "Firebase Console mein Email/Password sign-in enable karein.";
+      }
+
+      if (code.includes("permission-denied")) {
+        return "Firestore ne request reject ki. Rules aur field names check karne honge.";
+      }
+
+      if (code.includes("network-request-failed") ||
+          code.includes("unavailable")) {
+        return "Internet connection check karke dobara try karein.";
+      }
+
+      return "Registration complete nahi hui. Error: " +
+        (code || error?.message || "Unknown error");
+    }
+
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      if (submitting) return;
+
+      const ownerName = document.getElementById("ownerName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword =
+        document.getElementById("confirmPassword").value;
+      const businessName =
+        document.getElementById("businessName").value.trim();
+      const category = document.getElementById("category").value;
+      const address = document.getElementById("address").value.trim();
+      const city = document.getElementById("city").value.trim();
+      const description =
+        document.getElementById("description").value.trim();
+      const businessPhone =
+        document.getElementById("businessPhone").value.trim();
+      const showContact =
+        document.getElementById("showContact").checked;
+
+      if (password !== confirmPassword) {
+        showMessage("Dono password match nahi kar rahe.");
+        return;
+      }
+
+      if (showContact && !businessPhone) {
+        showMessage("Public contact enable karne se pehle business number enter karein.");
+        return;
+      }
+
+      if (businessPhone &&
+          !/^[0-9+\-()\s]{7,20}$/.test(businessPhone)) {
+        showMessage("Business contact number ka format check karein.");
+        return;
+      }
+
+      submitting = true;
+      submitBtn.disabled = true;
+      showMessage("Account aur business application submit ho rahe hain...");
+
+      try {
+        let user = auth.currentUser;
+
+        // Reuse current account only when its email matches.
+        if (user) {
+          if (!user.email ||
+              user.email.toLowerCase() !== email.toLowerCase()) {
+            throw new Error(
+              "Browser mein doosra account login hai. Pehle us account se logout karke dobara register karein."
+            );
+          }
+        } else {
+          const credential = await createUserWithEmailAndPassword(
+            auth, email, password
+          );
+          user = credential.user;
+        }
+
+        if (user.uid === "Ea8Ehp5zWveSB9S1mMjsaA0sYtv1") {
+          throw new Error("Admin account se business registration nahi ki ja sakti.");
+        }
+
+        const memberRef = doc(db, "members", user.uid);
+        const memberSnapshot = await getDoc(memberRef);
+
+        if (memberSnapshot.exists()) {
+          showMessage("Is account ka member profile pehle se hai. Dashboard khola ja raha hai...");
+          window.location.href = "member-dashboard.html";
+          return;
+        }
+
+        // Find an existing pending application for this account.
+        // This prevents duplicate applications after an interrupted registration.
+        const applicationsQuery = query(
+          collection(db, "businessApplications"),
+          where("ownerUid", "==", user.uid),
+          where("status", "==", "pending")
+        );
+
+        const applicationsSnapshot = await getDocs(applicationsQuery);
+
+        let applicationId = "";
+
+        if (!applicationsSnapshot.empty) {
+          applicationId = applicationsSnapshot.docs[0].id;
+        } else {
+          const applicationRef = await addDoc(
+            collection(db, "businessApplications"),
+            {
+              ownerUid: user.uid,
+              ownerName,
+              businessName,
+              category,
+              address,
+              city,
+              description,
+              businessContact: businessPhone,
+              contactPublic: showContact && Boolean(businessPhone),
+              status: "pending",
+              createdAt: serverTimestamp()
+            }
+          );
+
+          applicationId = applicationRef.id;
+        }
+
+        // Create the member profile using the existing or new application.
+        await setDoc(memberRef, {
+          uid: user.uid,
+          phoneNumber: "",
+          email: user.email || email,
+          applicationId,
+          status: "pending",
+          createdAt: serverTimestamp()
+        });
+
+        showMessage(
+          "Registration successful! Aapki application pending hai. Admin approval ke baad owner dashboard use kar sakte hain."
+        );
+
+        form.reset();
+
+        setTimeout(() => {
+          window.location.href = "member-dashboard.html";
+        }, 1800);
+
+      } catch (error) {
+        console.error("Registration error:", error);
+        showMessage(friendlyError(error));
+
+      } finally {
+        submitting = false;
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

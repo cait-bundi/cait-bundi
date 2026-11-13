@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#702c50">
+
+  <title>Community Updates | CAIT Women Wing Bundi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #fffaf5;
+      color: #17345c;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .updates-header {
+      padding: 18px 7%;
+      background: white;
+      border-bottom: 1px solid #eee5e9;
+    }
+
+    .header-inner {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+      color: #702c50;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .back-link {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      color: #702c50;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .updates-hero {
+      padding: 65px 20px 45px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #987083;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .updates-hero h1 {
+      margin: 13px 0;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(30px, 5vw, 46px);
+      color: #702c50;
+    }
+
+    .updates-hero p {
+      max-width: 600px;
+      margin: auto;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .updates-container {
+      width: min(900px, 90%);
+      margin: 0 auto 75px;
+    }
+
+    .updates-count {
+      margin-bottom: 20px;
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .updates-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .update-card {
+      overflow: hidden;
+      background: white;
+      border: 1px solid #eee5e9;
+      border-radius: 18px;
+      box-shadow: 0 5px 22px rgba(0,0,0,.04);
+    }
+
+    .update-image {
+      display: block;
+      width: 100%;
+      max-height: 390px;
+      object-fit: cover;
+      background: #f3edf0;
+    }
+
+    .update-content {
+      padding: 25px;
+    }
+
+    .update-date {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 20px;
+      background: #f7eedc;
+      color: #702c50;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .update-title {
+      margin: 0 0 12px;
+      color: #17345c;
+      font-family: "Manrope", sans-serif;
+      font-size: 22px;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    .update-description {
+      margin: 0;
+      color: #64748b;
+      font-size: 15px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .updates-state {
+      padding: 45px 20px;
+      text-align: center;
+      background: white;
+      border: 1px solid #eee5e9;
+      border-radius: 16px;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .updates-state h2 {
+      color: #702c50;
+      font-family: "Manrope", sans-serif;
+    }
+
+    .retry-button {
+      margin-top: 12px;
+      padding: 11px 22px;
+      border: 0;
+      border-radius: 25px;
+      background: #702c50;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .updates-footer {
+      padding: 25px 15px;
+      text-align: center;
+      background: white;
+      border-top: 1px solid #eee5e9;
+      color: #987083;
+      font-size: 13px;
+    }
+
+    @media(max-width: 600px) {
+      .updates-header {
+        padding: 14px 18px;
+      }
+
+      .brand-logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .updates-hero {
+        padding: 45px 20px 30px;
+      }
+
+      .updates-container {
+        width: calc(100% - 30px);
+      }
+
+      .update-content {
+        padding: 19px;
+      }
+
+      .update-title {
+        font-size: 19px;
+      }
+
+      .update-image {
+        max-height: 270px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="updates-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img
+          src="assets/cait-logo-transparent.png"
+          alt="CAIT Women Wing Logo"
+          class="brand-logo"
+        >
+
+        <span>
+          CAIT
+          <small>WOMEN WING BUNDI</small>
+        </span>
+      </a>
+
+      <a class="back-link" href="index.html">
+        ← Back to Home
+      </a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="updates-hero">
+
+      <span class="eyebrow">LEARN · CONNECT · GROW</span>
+
+      <h1>Community Updates</h1>
+
+      <p>
+        Stay connected with upcoming events, workshops,
+        meetings and important announcements from
+        CAIT Women Wing Bundi.
+      </p>
+
+    </section>
+
+    <section class="updates-container">
+
+      <div class="updates-count" id="updatesCount">
+        Loading updates...
+      </div>
+
+      <div class="updates-list" id="updatesList">
+
+        <div class="updates-state">
+          Please wait while we load the latest updates...
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="updates-footer">
+    © <span id="year"></span> CAIT Women Wing Bundi
+    <br>
+    Supporting women entrepreneurs in Bundi, Rajasthan.
+  </footer>
+
+  <script type="module" src="updates.js"></script>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>

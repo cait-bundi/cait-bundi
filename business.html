@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View business details in the CAIT Women Wing Bundi directory.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Business Details | CAIT Women Wing Bundi</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .business-detail-page {
+      width: min(100% - 32px, 920px);
+      margin: 42px auto 72px;
+    }
+
+    .back-directory {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: #17345c;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .business-detail-card {
+      padding: clamp(22px, 4vw, 42px);
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(15,23,42,.06);
+    }
+
+    .detail-icon {
+      display: flex;
+      width: 82px;
+      height: 82px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      border-radius: 20px;
+      background: #f7eedc;
+      font-size: 38px;
+    }
+
+    .business-photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0 0 28px;
+    }
+
+    .business-photo-gallery img {
+      display: block;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      background: #f8fafc;
+    }
+
+    .detail-category {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: #edf3ff;
+      color: #2455a4;
+      font-weight: 600;
+    }
+
+    .detail-title {
+      margin: 0 0 16px;
+      color: #17345c;
+      font-size: clamp(28px, 5vw, 42px);
+      overflow-wrap: anywhere;
+    }
+
+    .detail-description {
+      margin: 0 0 24px;
+      color: #64748b;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .detail-info {
+      display: grid;
+      gap: 14px;
+      margin: 26px 0;
+    }
+
+    .detail-info-row {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 12px;
+      line-height: 1.6;
+    }
+
+    .detail-info-label {
+      color: #475569;
+      font-weight: 700;
+    }
+
+    .detail-info-value {
+      color: #17345c;
+      overflow-wrap: anywhere;
+    }
+
+    .detail-actions,
+    .map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .detail-actions a,
+    .map-actions a {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .detail-primary-button {
+      background: #17345c;
+      color: #fff;
+    }
+
+    .detail-secondary-button,
+    .map-link {
+      border: 1px solid #d7deea;
+      background: #fff;
+      color: #17345c;
+    }
+
+    /* New sections */
+    .business-extra-section {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .business-extra-section h2 {
+      margin: 0 0 18px;
+      color: #17345c;
+      font-size: 24px;
+    }
+
+    .opening-hours-list {
+      display: grid;
+      gap: 0;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .opening-hour-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 16px;
+      border-bottom: 1px solid #eef0f4;
+      color: #334155;
+    }
+
+    .opening-hour-row:last-child {
+      border-bottom: 0;
+    }
+
+    .opening-hour-day {
+      font-weight: 600;
+    }
+
+    .opening-hour-time {
+      color: #475569;
+      text-align: right;
+    }
+
+    .closed-label {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    .hours-unavailable,
+    .products-empty {
+      padding: 18px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      color: #64748b;
+      background: #f8fafc;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 16px;
+    }
+
+    .public-product-card {
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .public-product-image {
+      display: block;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #f1f5f9;
+    }
+
+    .public-product-no-image {
+      display: flex;
+      width: 100%;
+      height: 180px;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      color: #94a3b8;
+      font-size: 36px;
+    }
+
+    .public-product-content {
+      padding: 14px;
+    }
+
+    .public-product-content h3 {
+      margin: 0 0 8px;
+      color: #17345c;
+      font-size: 17px;
+      overflow-wrap: anywhere;
+    }
+
+    .public-product-description {
+      margin: 0 0 12px;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .public-product-price {
+      margin: 0 0 10px;
+      color: #17345c;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .public-product-status {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 7px;
+      background: #ecfdf5;
+      color: #15803d;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .public-product-status.unavailable {
+      background: #fef2f2;
+      color: #dc2626;
+    }
+
+    .business-map-section {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .business-map-section h2 {
+      color: #17345c;
+      font-size: 24px;
+    }
+
+    .map-help-text {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .map-address {
+      color: #17345c;
+      overflow-wrap: anywhere;
+    }
+
+    .business-map-frame {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+    }
+
+    .business-map-frame iframe {
+      display: block;
+      width: 100%;
+      height: 340px;
+      border: 0;
+    }
+
+    .business-not-found {
+      padding: 28px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      color: #475569;
+      background: #fff;
+    }
+
+    @media(max-width:600px) {
+      .business-detail-page {
+        width: min(100% - 22px, 920px);
+        margin-top: 26px;
+      }
+
+      .business-detail-card {
+        padding: 22px 18px;
+      }
+
+      .business-photo-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .business-photo-gallery img {
+        height: 240px;
+      }
+
+      .detail-info-row {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+
+      .business-map-frame iframe {
+        height: 280px;
+      }
+
+      .detail-actions a,
+      .map-actions a {
+        flex: 1 1 100%;
+      }
+
+      .opening-hour-row {
+        padding: 12px;
+        font-size: 14px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .public-product-image,
+      .public-product-no-image {
+        height: 140px;
+      }
+
+      .public-product-content {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/cait-logo-transparent.png" alt="CAIT Logo" class="brand-logo">
+      <span>CAIT<small>WOMEN WING BUNDI</small></span>
+    </a>
+
+    <nav>
+      <a href="index.html#directory">Directory</a>
+      <a href="index.html#events">Events</a>
+    </nav>
+  </header>
+
+  <main class="business-detail-page">
+    <a class="back-directory" id="backDirectory" href="index.html#directory">
+      ← Back to directory
+    </a>
+
+    <article class="business-detail-card" id="businessDetail">
+      <div class="detail-icon" id="detailIcon">🏪</div>
+
+      <div id="businessPhotoGallery" class="business-photo-gallery" hidden></div>
+
+      <div class="detail-category" id="detailCategory">Business</div>
+
+      <h1 class="detail-title" id="detailName">Loading business...</h1>
+
+      <p class="detail-description" id="detailDescription">
+        Please wait while the business details load.
+      </p>
+
+      <div class="detail-info">
+        <div class="detail-info-row">
+          <span class="detail-info-label">Location</span>
+          <span class="detail-info-value" id="detailLocation">Loading...</span>
+        </div>
+
+        <div class="detail-info-row" id="ownerRow" hidden>
+          <span class="detail-info-label">Business owner</span>
+          <span class="detail-info-value" id="detailOwner"></span>
+        </div>
+      </div>
+
+      <div class="detail-actions" id="detailActions"></div>
+
+      <!-- Opening Hours -->
+      <section class="business-extra-section" id="openingHoursSection">
+        <h2>🕒 Opening Hours</h2>
+        <div id="businessOpeningHours" class="opening-hours-list">
+          <p class="hours-unavailable">Loading opening hours...</p>
+        </div>
+      </section>
+
+      <!-- Products and Services -->
+      <section class="business-extra-section" id="productsSection">
+        <h2>🛍️ Products &amp; Services</h2>
+        <div id="businessProducts" class="products-grid">
+          <p class="products-empty">Loading products...</p>
+        </div>
+      </section>
+
+      <!-- Business Location -->
+      <section class="business-map-section">
+        <h2>Business Location</h2>
+        <p class="map-help-text">
+          View the location on the map. Confirm the business address with the owner.
+        </p>
+
+        <p class="map-address" id="mapAddress">Bundi, Rajasthan</p>
+
+        <div class="business-map-frame">
+          <iframe
+            id="businessMap"
+            title="Map showing business location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            src="about:blank">
+          </iframe>
+        </div>
+
+        <div class="map-actions">
+          <a id="openGoogleMaps" class="map-link" href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">
+            Open in Google Maps ↗
+          </a>
+          <a class="map-link" href="index.html#directory">Back to Directory</a>
+        </div>
+      </section>
+    </article>
+
+    <div id="businessNotFound" class="business-not-found" hidden>
+      <h2>Business details unavailable</h2>
+      <p>Please return to the directory and open a business from the listing.</p>
+      <a class="map-link" href="index.html#directory">Return to directory</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>CAIT Women Wing Bundi · Supporting women-owned businesses.</p>
+  </footer>
+
+  <script type="module" src="business.js"></script>
+</body>
+</html>

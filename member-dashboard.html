@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#651d32">
+  <title>Owner Dashboard | CAIT Women Wing Bundi</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --member-primary: #651d32;
+      --member-primary-dark: #4b1425;
+      --member-muted: #64748b;
+      --member-border: #e2e8f0;
+      --member-bg: #f8fafc;
+    }
+
+    body { background: var(--member-bg); }
+
+    .member-wrap {
+      width: min(100% - 28px, 900px);
+      margin: 32px auto 60px;
+    }
+
+    .member-heading { margin-bottom: 24px; }
+
+    .member-eyebrow {
+      color: var(--member-primary);
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .member-heading h1 {
+      margin: 8px 0;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+
+    .member-muted {
+      color: var(--member-muted);
+      line-height: 1.7;
+    }
+
+    .member-card {
+      background: #fff;
+      border: 1px solid var(--member-border);
+      border-radius: 18px;
+      padding: clamp(18px, 4vw, 30px);
+      margin: 18px 0;
+      box-shadow: 0 8px 28px rgba(15,23,42,.045);
+    }
+
+    .member-card h2 { margin-top: 0; }
+
+    .member-status {
+      display: inline-flex;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: #166534;
+      font-size: .85rem;
+      font-weight: 700;
+      margin: 0 0 22px;
+    }
+
+    .member-form,
+    .product-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .member-form label,
+    .product-form label {
+      display: block;
+      min-width: 0;
+      font-weight: 650;
+      font-size: .94rem;
+    }
+
+    .member-form input,
+    .member-form textarea,
+    .member-form select,
+    .product-form input,
+    .product-form textarea,
+    .product-form select {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      margin-top: 8px;
+      padding: 12px 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #fff;
+      color: #172033;
+      font: inherit;
+      font-weight: 400;
+    }
+
+    .member-form input:focus,
+    .member-form textarea:focus,
+    .member-form select:focus,
+    .product-form input:focus,
+    .product-form textarea:focus,
+    .product-form select:focus {
+      outline: none;
+      border-color: var(--member-primary);
+      box-shadow: 0 0 0 3px rgba(101,29,50,.1);
+    }
+
+    .member-form textarea,
+    .product-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .member-full { grid-column: 1 / -1; }
+
+    .member-hint {
+      display: block;
+      margin-top: 6px;
+      color: var(--member-muted);
+      font-size: .8rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .member-checkbox {
+      display: flex !important;
+      gap: 11px;
+      align-items: flex-start;
+      padding: 15px;
+      border: 1px solid var(--member-border);
+      border-radius: 12px;
+      background: #fafafa;
+    }
+
+    .member-checkbox input {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin: 2px 0 0;
+      accent-color: var(--member-primary);
+    }
+
+    .contact-heading {
+      margin: 0 0 8px;
+      color: var(--member-primary);
+    }
+
+    .member-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .member-actions button {
+      cursor: pointer;
+      min-height: 44px;
+    }
+
+    .member-save {
+      background: var(--member-primary) !important;
+      color: #fff !important;
+      border: 1px solid var(--member-primary) !important;
+    }
+
+    .member-save:hover {
+      background: var(--member-primary-dark) !important;
+    }
+
+    .member-save:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    .member-logout {
+      background: #fff !important;
+      color: var(--member-primary) !important;
+      border: 1px solid #d7c1c8 !important;
+    }
+
+    .member-message {
+      padding: 13px 15px;
+      border-radius: 10px;
+      margin: 20px 0 0;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .member-message[data-type="success"] {
+      color: #166534;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .member-message[data-type="error"] {
+      color: #991b1b;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+    }
+
+    .member-message[data-type="info"] {
+      color: #1e40af;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* Simple opening hours */
+    .hours-settings {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+      padding: 18px;
+      border: 1px solid var(--member-border);
+      border-radius: 12px;
+      background: #fafafa;
+    }
+
+    .hours-settings label {
+      display: block;
+      font-weight: 650;
+    }
+
+    .hours-settings input,
+    .hours-settings select {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      margin-top: 8px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #fff;
+      font: inherit;
+    }
+
+    .hours-note {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: var(--member-muted);
+      font-size: .85rem;
+      line-height: 1.6;
+    }
+
+    /* Products */
+    .product-section { margin-top: 28px; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .product-item {
+      overflow: hidden;
+      border: 1px solid var(--member-border);
+      border-radius: 13px;
+      background: #fff;
+    }
+
+    .product-item img {
+      width: 100%;
+      height: 145px;
+      object-fit: cover;
+      display: block;
+      background: #f1f5f9;
+    }
+
+    .product-item-content { padding: 12px; }
+
+    .product-item h4 {
+      margin: 0 0 6px;
+      overflow-wrap: anywhere;
+    }
+
+    .product-price {
+      color: var(--member-primary);
+      font-weight: 800;
+    }
+
+    .product-item-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .product-item-actions button {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--member-border);
+      background: #fff;
+      cursor: pointer;
+      font-weight: 650;
+    }
+
+    .product-item-actions .delete-product { color: #b91c1c; }
+
+    .product-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .product-preview img {
+      width: 76px;
+      height: 76px;
+      object-fit: cover;
+      border-radius: 9px;
+      border: 1px solid var(--member-border);
+    }
+
+    .product-empty {
+      padding: 18px;
+      text-align: center;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      color: var(--member-muted);
+      grid-column: 1 / -1;
+    }
+
+    .member-footer {
+      text-align: center;
+      color: var(--member-muted);
+      font-size: .85rem;
+      margin-top: 24px;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 600px) {
+      .member-wrap { margin-top: 22px; }
+
+      .member-form,
+      .product-form,
+      .hours-settings {
+        grid-template-columns: 1fr;
+      }
+
+      .member-full,
+      .member-actions,
+      .hours-note {
+        grid-column: 1;
+      }
+
+      .member-actions button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/cait-logo-transparent.png"
+        alt="CAIT Women Wing Logo" class="brand-logo">
+      <span>CAIT <small>WOMEN WING BUNDI</small></span>
+    </a>
+
+    <nav>
+      <a href="index.html#directory">View Directory ↗</a>
+    </nav>
+  </header>
+
+  <main class="member-wrap">
+    <div class="member-heading">
+      <span class="member-eyebrow">Business owner portal</span>
+      <h1>My Business Dashboard</h1>
+      <p class="member-muted">
+        Apni business details, products aur opening hours manage karein.
+      </p>
+    </div>
+
+    <section class="member-card" id="loadingCard" aria-live="polite">
+      <p id="loadingMessage">Checking your login and business profile...</p>
+    </section>
+
+    <section class="member-card" id="profileCard" hidden>
+      <h2 id="businessHeading">Your Business</h2>
+      <p class="member-muted">
+        Yahan kiye gaye changes aapki approved business listing par save honge.
+      </p>
+
+      <p class="member-status" id="statusText">● Approved listing</p>
+
+      <form class="member-form" id="profileForm">
+        <label>
+          Business name *
+          <input id="businessName" name="businessName"
+            type="text" maxlength="100" required>
+        </label>
+
+        <label>
+          Category *
+          <select id="category" name="category" required>
+            <option value="Fashion">Fashion &amp; Boutique</option>
+            <option value="Food">Food &amp; Bakery</option>
+            <option value="Beauty">Beauty &amp; Wellness</option>
+            <option value="Education">Education</option>
+            <option value="Services">Professional Services</option>
+            <option value="Handicrafts">Handicrafts</option>
+            <option value="Retail & Shopping">Retail &amp; Shopping</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+
+        <label class="member-full">
+          Business address / area *
+          <input id="address" name="address"
+            type="text" maxlength="250" required>
+        </label>
+
+        <label>
+          City *
+          <input id="city" name="city"
+            type="text" maxlength="80" required>
+        </label>
+
+        <label>
+          Business Call Number
+          <input id="businessContact" name="businessContact"
+            type="tel" maxlength="20">
+          <span class="member-hint">
+            Customers is number par call kar sakenge, agar permission enable hai.
+          </span>
+        </label>
+
+        <label class="member-full">
+          WhatsApp Number
+          <input id="whatsappNumber" name="whatsappNumber"
+            type="tel" maxlength="20">
+          <span class="member-hint">
+            Call number se alag WhatsApp number bhi de sakte hain.
+          </span>
+        </label>
+
+        <label class="member-full">
+          Business description
+          <textarea id="description" name="description"
+            maxlength="1000"
+            placeholder="Apne business, products ya services ke baare mein likhein..."></textarea>
+          <span class="member-hint">Maximum 1000 characters.</span>
+        </label>
+
+        <div class="member-full">
+          <h3 class="contact-heading">Business Opening Hours</h3>
+          <p class="member-muted">
+            Sirf ek baar apne business ka daily opening aur closing time set karein.
+          </p>
+
+          <div class="hours-settings">
+            <label>
+              Opening Time
+              <input id="openingTime" type="time">
+            </label>
+
+            <label>
+              Closing Time
+              <input id="closingTime" type="time">
+            </label>
+
+            <label class="member-full">
+              Weekly Holiday (Optional)
+              <select id="weeklyHoliday">
+                <option value="">No fixed weekly holiday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </label>
+
+            <p class="hours-note">
+              Example: Opening 09:00 AM, Closing 08:00 PM. Ye timing har din dikhegi, selected weekly holiday ko chhodkar.
+            </p>
+          </div>
+        </div>
+
+        <div class="member-full">
+          <h3 class="contact-heading">Call Button Permission</h3>
+          <label class="member-checkbox">
+            <input id="callEnabled" name="callEnabled" type="checkbox">
+            <span>
+              Allow customers to call my business.
+              <span class="member-hint">
+                Enable karne par approved listing par Call Business button dikhega.
+              </span>
+            </span>
+          </label>
+        </div>
+
+        <div class="member-full">
+          <h3 class="contact-heading">WhatsApp Button Permission</h3>
+          <label class="member-checkbox">
+            <input id="whatsappEnabled" name="whatsappEnabled" type="checkbox">
+            <span>
+              Allow customers to contact my business on WhatsApp.
+              <span class="member-hint">
+                Enable karne par approved listing par WhatsApp button dikhega.
+              </span>
+            </span>
+          </label>
+        </div>
+
+        <div class="member-full member-muted">
+          * Required fields. Approval status aur account ownership yahan change nahi ki ja sakti.
+        </div>
+
+        <div class="member-actions">
+          <button class="button member-save" id="saveButton" type="submit">
+            Save Changes
+          </button>
+          <button class="button secondary member-logout"
+            id="logoutButton" type="button">
+            Logout
+          </button>
+        </div>
+      </form>
+
+      <p class="member-message" id="formMessage"
+        role="status" aria-live="polite" hidden></p>
+
+      <div class="product-section">
+        <hr style="border:0;border-top:1px solid #e2e8f0;margin:30px 0;">
+
+        <h2>My Products</h2>
+        <p class="member-muted">
+          Apne business ke products add karein. Customers aapki listing par products aur unki photos dekh sakenge.
+        </p>
+
+        <form class="product-form" id="productForm">
+          <input type="hidden" id="productId">
+
+          <label class="member-full">
+            Product Name *
+            <input id="productName" type="text"
+              maxlength="100" required
+              placeholder="Jaise: Handmade Dress">
+          </label>
+
+          <label>
+            Product Price (₹)
+            <input id="productPrice" type="number"
+              min="0" step="0.01" placeholder="Optional">
+          </label>
+
+          <label>
+            Availability
+            <select id="productAvailability">
+              <option value="true">Available</option>
+              <option value="false">Unavailable</option>
+            </select>
+          </label>
+
+          <label class="member-full">
+            Product Description
+            <textarea id="productDescription"
+              maxlength="500"
+              placeholder="Product ke baare mein likhein..."></textarea>
+          </label>
+
+          <label class="member-full">
+            Product Photos *
+            <input id="productPhotos" type="file"
+              accept="image/*" multiple>
+            <span class="member-hint">
+              1–5 photos select karein. Har photo maximum 5 MB.
+              Edit karte waqt photos select karna optional hoga.
+            </span>
+          </label>
+
+          <div class="member-full">
+            <div class="product-preview" id="productPhotoPreview"></div>
+          </div>
+
+          <div class="member-actions">
+            <button class="button member-save"
+              id="productSaveButton" type="submit">Add Product</button>
+            <button class="button secondary member-logout"
+              id="cancelProductEdit" type="button" hidden>Cancel Edit</button>
+          </div>
+        </form>
+
+        <p class="member-message" id="productMessage"
+          role="status" aria-live="polite" hidden></p>
+
+        <h3 style="margin-top:30px;">Your Product List</h3>
+        <div class="product-grid" id="productList">
+          <div class="product-empty">Your products will appear here.</div>
+        </div>
+      </div>
+    </section>
+
+    <p class="member-footer">
+      CAIT Women Wing Bundi · Business Owner Portal
+    </p>
+  </main>
+
+  <script type="module" src="member-dashboard.js"></script>
+</body>
+</html>
